@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Clear Students Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: darkcyan;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .wrapper {
+            width: 420px;
+            background: rgba( 0, 0, 0, 0.6 );
+            border: 2px solid rgba(255, 255, 255, .2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+            color: #fff;
+            border-radius: 10px;
+            padding: 30px 40px;
+        }
+
+        .wrapper h1{
+            font-size: 36px;
+            text-align: center;
+        }
+        .wrapper .register-link{
+            font-size: 14.5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a{
+            color: greenyellow;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1>
+            All Students Have Been Removed Successfully!
+        </h1>
+
+        <br>
+
+        <div class="register-link">
+            <a th:href="@{/mark_the_student}">Go Back?</a>
+        </div>
+    </div>
+</body>
+</html>

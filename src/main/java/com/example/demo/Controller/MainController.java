@@ -82,10 +82,6 @@ public class MainController {
     }
 
 
-    @GetMapping("/remove_all_students")
-    public void removeAllStud(){
-        studentsServices.clearStudents();
-    }
 
     @GetMapping("/mark_the_student")
     public String showRegPage(Model model){
@@ -97,5 +93,12 @@ public class MainController {
     public String submitStudRegForm(@ModelAttribute("students") Students students) {
         studentsServices.save(students);
         return "redirect:/mark_the_student";
+    }
+
+    @GetMapping("/remove_all_students")
+    public String removeAllStud(){
+        studentsServices.clearStudents();
+
+        return "remove_all_students";
     }
 }
