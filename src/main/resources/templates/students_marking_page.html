@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark STEM Student</title>
+    <link th:href="@{/style.css}" rel="stylesheet" />
+    <link th:href='@{/https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css}' rel="stylesheet" />
+</head>
+<body>
+
+<div class="wrapper">
+    <form  th:action="@{/mark_the_student}" th:object="${students}" method="post">
+
+        <h1>Mark The Student</h1>
+
+        <div class="input-box">
+            <label>Student's name: <input id="name" th:field="*{name}" type="text"/></label>
+        </div>
+
+
+        <div class="input-box">
+            <label>Student's surname: <input id="surname" th:field="*{surname}" type="text" /></label>
+        </div>
+
+        <div class="input-box">
+            <label>Student's grade: <input id="grade" th:field="*{grade}" type="text" /></label>
+        </div>
+
+        <div class="input-box">
+            <label>Student's mark: <input id="mark" th:field="*{mark}" type="number" /></label>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
