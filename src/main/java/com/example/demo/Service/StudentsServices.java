@@ -17,4 +17,9 @@ public class StudentsServices {
     public void clearStudents(){
         studentsRepository.deleteAll();
     }
+
+    public void removeStudentById(int id){
+        studentsRepository.deleteById(id);
+    }
+
 }

@@ -11,10 +11,7 @@ import com.example.demo.Service.StudentsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -100,5 +97,23 @@ public class MainController {
         studentsServices.clearStudents();
 
         return "remove_all_students";
+    }
+
+    @GetMapping("/students/remove/{id}")
+    public String removeById(@PathVariable int id){
+
+        studentsServices.removeStudentById(id);
+        return "redirect:/mark_the_student";
+    }
+
+    @GetMapping("/showallemp")
+    public String showAllEmp(Model model){
+        for (Employee emp : employeeService.findAllEmp()){
+            System.out.println(emp.getName() + "  " + emp.getSurname());
+        }
+
+        model.addAttribute("employee", employeeService.findAllEmp());
+
+        return "employee";
     }
 }
