@@ -117,12 +117,20 @@ public class MainController {
         return "employee";
     }
 
-    @GetMapping("/showmmpbyid/{id}")
-    public String EmpById(@PathVariable("id") int id, Model model){
+    @GetMapping("/selectemp")
+    public String showEmpSelectPage(Model model){
+        for (Employee emp : employeeService.findAllEmp()){
+            System.out.println(emp.getName() + "  " + emp.getSurname());
+        }
 
-        Employee employee = employeeService.findEmpById(id);
-        model.addAttribute("showEmp", employee);
+        model.addAttribute("showEmp", employeeService.findAllEmp());
 
-        return "employee";
+        return "emp-page";
+    }
+
+    @PostMapping("/show_mark_of_the_student")
+    public String showStudentsMark() {
+
+        return "redirect:/show_students_mark";
     }
 }

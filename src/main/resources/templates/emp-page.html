@@ -5,10 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    <div>
-        <p> Id : s <span th:text="${showEmp.id}"></span> </p>
-        <p> Name : s <span th:text="${showEmp.name}"></span> </p>
-        <p> Surname : s <span th:text="${showEmp.surname}"></span> </p>
-    </div>
+    <form th:action="@{/show_mark_of_the_student}" method="post">
+        <div>
+            <select>
+                <option th:each="Emp, iter : ${showEmp}"><p th:text="${Emp.id}"></p> <p th:text="${Emp.name}"></p></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
 </body>
 </html>
