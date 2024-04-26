@@ -30,4 +30,8 @@ public class EmployeeService {
     public List<Employee> findAllEmp(){
        return employeeRepository.findAll();
     }
+
+    public Employee findEmpById(int id){
+        employeeRepository.findById(id);
+    }
 }

@@ -116,4 +116,13 @@ public class MainController {
 
         return "employee";
     }
+
+    @GetMapping("/showmmpbyid/{id}")
+    public String EmpById(@PathVariable("id") int id, Model model){
+
+        Employee employee = employeeService.findEmpById(id);
+        model.addAttribute("showEmp", employee);
+
+        return "employee";
+    }
 }
