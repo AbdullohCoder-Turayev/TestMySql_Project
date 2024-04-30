@@ -5,14 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-    <form th:action="@{/show_mark_of_the_student}" method="post">
-        <div>
-            <select>
-                <option th:each="Emp, iter : ${showEmp}"><p th:text="${Emp.id}"></p> <p th:text="${Emp.name}"></p></option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn">Submit</button>
-    </form>
+<form th:action="@{/show_emp_info}" method="post">
+    <div>
+        <select name="empId"> <!-- Add name attribute -->
+            <option th:each="emp : ${showEmp}" th:value="${emp.id}"> <!-- Specify value attribute -->
+                <p th:text="${emp.id}"></p> <p th:text="${emp.name}"></p>
+            </option>
+        </select>
+    </div>
+    <button type="submit" class="btn">Submit</button>
+</form>
 </body>
 </html>

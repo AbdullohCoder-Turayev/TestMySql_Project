@@ -128,9 +128,14 @@ public class MainController {
         return "emp-page";
     }
 
-    @PostMapping("/show_mark_of_the_student")
-    public String showStudentsMark() {
+    @PostMapping("/show_emp_info")
+    public String showEmpInfo(@RequestParam("empId") int empId) { // Receive selected employee ID
+        return "redirect:/emp/show/" + empId; // Redirect to showEmpById method with the selected employee ID
+    }
 
-        return "redirect:/show_students_mark";
+    @GetMapping("/emp/show/{id}")
+    public String showEmpById(@PathVariable int id, Model model) {
+        model.addAttribute("emp_id", employeeService.findEmpById(id));
+        return "emp-by-id";
     }
 }
