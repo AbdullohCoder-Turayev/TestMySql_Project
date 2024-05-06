@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.DTO.EmployeeDTO;
+import com.example.demo.DTO.StudentsDTO;
 import com.example.demo.Entity.Customers;
 import com.example.demo.Entity.Employee;
 import com.example.demo.Entity.Students;
@@ -137,5 +139,55 @@ public class MainController {
     public String showEmpById(@PathVariable int id, Model model) {
         model.addAttribute("emp_id", employeeService.findEmpById(id));
         return "emp-by-id";
+    }
+
+    @GetMapping("edit/emp/{id}")
+    public String editName(@PathVariable int id, Model model){
+        employeeService.changeEmpNameById(id);
+
+
+
+
+
+        return "page";
+    }
+
+    @GetMapping("/edit/students/choose")
+    public String editPageShow(Model model){
+        for (Students stud : studentsServices.findAllStud()){
+            System.out.println(stud.getName() + "  " + stud.getSurname());
+        }
+
+        model.addAttribute("showEmp", employeeService.findAllEmp());
+
+        return "student-choose";
+    }
+
+    @GetMapping("/employee/dto")
+    public String showDTO(EmployeeDTO dto, Model model){
+        model.addAttribute("empDto", new EmployeeDTO());
+
+        return "EmployeeDTO";
+    }
+
+    @PostMapping("/employeeDTO")
+    public String submitDto(@ModelAttribute("employeeDto") EmployeeDTO employeeDTO){
+        employeeService.saveDto(employeeDTO);
+
+        return "redirect:/employee/dto";
+    }
+
+    @GetMapping("/students/dto")
+    public String showStudDto(StudentsDTO dto, Model model){
+        model.addAttribute("studDto", new StudentsDTO());
+
+        return "StudentsDTO";
+    }
+
+    @PostMapping("/studDTO")
+    public String submitStudDTO(@ModelAttribute("studentsDto") StudentsDTO studentsDTO){
+        studentsServices.saveDto(studentsDTO);
+
+        return "redirect:/students/dto";
     }
 }

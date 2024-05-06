@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>Student from with DTO</h1>
+
+<form th:action="@{/studDTO}" th:object="${studDto}" method="post">
+
+  <label>Name: </label>
+  <input th:field="*{name}" />
+
+  <label>Surname: </label>
+  <input th:field="*{surname}" />
+
+  <label>Grade: </label>
+  <input th:field="*{grade}" />
+
+  <label>Mark: </label>
+  <input th:field="*{mark}" />
+
+  <button type="submit">Submit!</button>
+</form>
+</body>
+</html>

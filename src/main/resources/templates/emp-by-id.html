@@ -3,24 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Show Employee By Id</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        table{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-collapse: collapse;
+            width: 800px;
+            height: 200px;
+            border: 1px solid #bdc3c7;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+        }
+
+        tr{
+            transition: all .2s ease-in;
+            cursor: pointer;
+        }
+
+        th,td{
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #header{
+            background-color: #16a085;
+            color: #fff;
+        }
+
+        h1{
+            font-weight: 600;
+            text-align: center;
+            background-color: #16a085;
+            color: #fff;
+            padding: 10px 0px;
+        }
+
+        tr:hover{
+            background-color: #f5f5f5;
+            transform: scale(1.02);
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
+
+<h1>Employee's info</h1>
+
 <div>
     <table>
         <thead>
-        <tr>
-            <td>#</td>
-            <td>Name</td>
-            <td>Surname</td>
-        </tr>
+            <tr id="header">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:each="emp : ${emp_id}">
-            <td th:text="${emp.id}"></td>
+            <tr th:each="emp : ${emp_id}">
+                <td th:text="${emp.id}"></td>
 
-            <td th:text="${emp.name}"></td>
-            <td th:text="${emp.surname}"></td>
-        </tr>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.surname}"></td>
+            </tr>
         </tbody>
     </table>
 </div>

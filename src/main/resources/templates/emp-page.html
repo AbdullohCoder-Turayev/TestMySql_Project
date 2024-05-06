@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/emp-style.css}" rel="stylesheet" />
 </head>
 <body>
+<div class="wrapper">
+    <h1>
+        Select The Employee, Mark Of Whom You Wanna See!
+    </h1>
+
 <form th:action="@{/show_emp_info}" method="post">
-    <div>
+    <div class="input-box">
         <select name="empId"> <!-- Add name attribute -->
             <option th:each="emp : ${showEmp}" th:value="${emp.id}"> <!-- Specify value attribute -->
                 <p th:text="${emp.id}"></p> <p th:text="${emp.name}"></p>
@@ -15,5 +21,6 @@
     </div>
     <button type="submit" class="btn">Submit</button>
 </form>
+</div>
 </body>
 </html>

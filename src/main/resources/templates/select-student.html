@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>
+            Select The Student, Mark Of Whom You Wanna See!
+        </h1>
+
+        <form th:action="@{/show_student_info}" method="post">
+            <div class="input-box">
+                <select name="empId"> <!-- Add name attribute -->
+                    <option th:each="emp : ${showEmp}" th:value="${emp.id}"> <!-- Specify value attribute -->
+                        <p th:text="${emp.id}"></p> <p th:text="${emp.name}"></p>
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

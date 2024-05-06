@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.DTO.EmployeeDTO;
 import com.example.demo.Entity.Employee;
 import com.example.demo.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,28 @@ public class EmployeeService {
     }
 
     public Employee findEmpById(int id){
-        Optional<Employee> emp = employeeRepository.findById(id);
+        Employee emp = employeeRepository.findById(id);
 
-        return emp.orElse(null);
+        return emp;
+    }
+
+    public Employee changeEmpNameById(int id){
+        Employee emp = employeeRepository.findById(id);
+
+
+        emp.setName("Edited Name");
+        emp.setSurname("edited suranme");
+        employeeRepository.save(emp);
+
+        return emp;
+    }
+
+    public void saveDto(EmployeeDTO employeeDTO){
+        Employee emp = new Employee();
+
+        emp.setName(employeeDTO.getName());
+        emp.setSurname(employeeDTO.getSurname());
+
+        employeeRepository.save(emp);
     }
 }
